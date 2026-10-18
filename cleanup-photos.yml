@@ -1,0 +1,19 @@
+name: Xoa anh cu sau 15 ngay
+
+on:
+  schedule:
+    - cron: '17 3 * * *'   # chạy mỗi ngày
+  workflow_dispatch: {}     # cho phép bấm chạy thử bằng tay
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/cleanup-photos.mjs
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}

@@ -1,0 +1,108 @@
+GHI CHÚ DỰ ÁN: ỨNG DỤNG THIỆP CHÚC MỪNG ĐỘNG (Sinh nhật / Tết / Lễ)
+
+1. MỤC TIÊU
+- Làm một ứng dụng web (hoặc mobile / trang đơn giản) hiển thị lời chúc kèm hoạt ảnh theo từng dịp: sinh nhật, Tết, Giáng sinh, các ngày lễ khác.
+- Người lạ có thể dùng: tự nhập tên người nhận, lời chúc, ảnh (nếu có).
+- Mỗi dịp có hoạt ảnh mặc định. Ví dụ sinh nhật: từng lớp bánh và kem rơi xuống tạo thành bánh hoàn chỉnh, pháo bắn, hoa giấy rơi.
+- Sau khi cấu hình xong, xuất ra link hoặc mã QR để người nhận mở xem.
+- Yêu cầu: toàn bộ miễn phí, không tốn tiền setup.
+- Không muốn người lạ thấy tên GitHub cá nhân.
+
+2. Ý TƯỞNG CỐT LÕI
+- Web app TĨNH (không backend, không database, không đăng nhập).
+- Cấu hình thiệp được gói vào chính cái link, phần sau dấu #:
+  https://ten-app.pages.dev/#/v/<chuoi-nen>
+- Mã QR chỉ là link đó chuyển thành ảnh.
+- Phần sau dấu # không được gửi lên server, nên server không biết nội dung lời chúc (có lợi về quyền riêng tư).
+
+3. CÔNG NGHỆ (tất cả miễn phí)
+- Framework: Vite + React + TypeScript (hoặc HTML/JS thuần nếu muốn nhẹ)
+- Style: Tailwind CSS hoặc CSS thuần
+- Hoạt ảnh trình tự: GSAP (timeline) hoặc Framer Motion
+- Pháo / hoa giấy: canvas-confetti, hoặc tự viết bằng Canvas 2D
+- Hoạt ảnh vector: Lottie (LottieFiles miễn phí) hoặc SVG + CSS (nên vẽ bánh bằng SVG)
+- Nén dữ liệu vào link: lz-string
+- Tạo QR: qrcode hoặc qr-code-styling (chạy ở trình duyệt)
+- Xuất ảnh / tải PNG: canvas.toBlob() hoặc html-to-image
+- Âm thanh: Howler.js hoặc thẻ <audio>
+- Chia sẻ trên mobile: Web Share API (navigator.share)
+- Mobile app (tùy chọn): PWA (vite-plugin-pwa), hoặc Capacitor nếu cần
+- Hosting: Cloudflare Pages / Netlify (nên dùng) hoặc GitHub Pages
+
+4. KIẾN TRÚC
+src/
+  pages/Editor   : trang tạo (nhập tên, lời chúc, chọn dịp, ảnh)
+  pages/Viewer   : trang xem (đọc config từ URL, phát hoạt ảnh)
+  themes/        : mỗi dịp một theme độc lập (birthday, tet, christmas...)
+  lib/encode.ts, decode.ts, qr.ts
+  types.ts
+- Mỗi theme dùng chung một interface, thêm dịp mới chỉ cần thêm một thư mục.
+- Config có trường v (version) để link cũ không bị vỡ khi nâng cấp.
+- Dùng hash routing (#/view) để chạy tốt trên hosting tĩnh.
+- Ví dụ config: {"v":1,"theme":"birthday","name":"Lan","message":"...","imageUrl":"...","music":true,"color":"#ff7aa2"}
+
+5. LUỒNG SỬ DỤNG
+Người tạo:
+  Mở web -> chọn dịp -> nhập tên, lời chúc, ảnh -> xem trước trực tiếp -> bấm "Tạo link" -> nhận link + QR (copy / tải / chia sẻ).
+Người nhận:
+  Quét QR hoặc bấm link -> trình duyệt tải app -> màn hình "Chạm để mở thiệp" -> hoạt ảnh chạy với đúng tên và lời chúc.
+- Cả hai dùng chung một trang web. Link người nhận có kèm dữ liệu sau dấu # nên app tự vào chế độ xem.
+
+6. DỮ LIỆU LƯU Ở ĐÂU
+- Không lưu ở đâu cả: chính cái link là "database".
+- JS gom form thành JSON -> nén bằng lz-string -> gắn vào sau dấu # -> người nhận mở link thì giải nén và vẽ hoạt ảnh.
+- Hạn chế: link không sửa được sau khi gửi, không thống kê được lượt tạo / lượt xem, lời chúc nên giới hạn khoảng 300-500 ký tự để QR còn quét tốt.
+
+7. VẤN ĐỀ ẢNH (khó nhất)
+- Ảnh không nhét vừa vào link. Ảnh thu nhỏ khoảng 15KB cũng làm link dài hàng chục nghìn ký tự, trong khi QR chỉ chứa được khoảng 3.000 byte.
+- Người lạ không nên bị bắt tự upload ảnh rồi dán link (quá phiền).
+Hướng đi 2 chặng:
+  Chặng 1 (MVP): chưa có upload ảnh. Cho chọn ảnh / sticker / emoji có sẵn, hoặc dán link ảnh. Hoàn toàn tĩnh, không backend.
+  Chặng 2: thêm lưu trữ. Ảnh upload lên storage, config lưu database, link thành dạng ngắn /#/v/abc123. Link ngắn, QR thưa dễ quét, sau này có thể làm sửa / xóa.
+Dịch vụ free cho chặng 2:
+  - Supabase (không cần thẻ). Lưu ý: theo hiểu biết của mình, project free có thể bị tạm dừng nếu không hoạt động khoảng 1 tuần, cần kiểm tra lại chính sách.
+  - Cloudflare (Pages Functions + R2 + D1): trong một tài khoản, nhưng R2 có thể yêu cầu gắn thẻ dù không bị tính phí, cần kiểm tra lại.
+- Khi cho người lạ upload cần: giới hạn kích thước ảnh, chỉ nhận jpg/png/webp, giới hạn số lần tạo, tránh bị lạm dụng.
+
+8. ẨN TÊN GITHUB
+- GitHub Pages có dạng username.github.io nên lộ tên.
+- Cách 1 (khuyên dùng): deploy bằng Cloudflare Pages hoặc Netlify, đặt tên project trung tính (vd ten-ban-chon.pages.dev). Code để trên GitHub, repo để PRIVATE.
+- Cách 2: tạo GitHub Organization miễn phí với tên trung tính (hợp lệ). Không nên tạo tài khoản cá nhân thứ hai vì thường vi phạm điều khoản GitHub.
+- Cách 3 (tùy chọn): mua tên miền riêng khoảng 30-300k/năm, trỏ về Cloudflare Pages.
+- Dùng email noreply của GitHub khi commit (Settings -> Emails -> Keep my email addresses private).
+- Nếu repo public thì người ta vẫn tìm ra tên qua repo.
+
+9. DEPLOY
+- Cloudflare Pages / Netlify: kết nối repo (hoặc kéo thả thư mục build), bấm deploy, có subdomain miễn phí.
+- GitHub Pages: thêm base vào vite.config.ts, build bằng GitHub Actions hoặc gh-pages (nhưng lộ tên GitHub).
+- Có thể làm cả hai: bản hosted cho mọi người dùng chung, và open-source cho người muốn tự fork và tự deploy.
+
+10. LỘ TRÌNH THỰC HIỆN
+- Giai đoạn 1 (1-2 ngày): dựng project Vite, cài lib (lz-string, qrcode, canvas-confetti, gsap), làm Editor + Viewer, viết encode/decode, kiểm tra tạo link rồi mở lại.
+- Giai đoạn 2 (2-3 ngày): theme sinh nhật bằng GSAP timeline: nền tối -> tên -> bánh rơi (bounce) -> kem phủ -> nến + lửa nhấp nháy -> thổi nến -> pháo + hoa giấy -> lời chúc hiện từng chữ -> ảnh.
+- Giai đoạn 3 (1-2 ngày): Editor hoàn chỉnh, live preview, nút tạo link, tạo QR (tải PNG), nút chia sẻ.
+- Giai đoạn 4 (mỗi theme 1-2 ngày): Tết (hoa mai/đào rơi, lì xì, pháo hoa), Giáng sinh (tuyết, cây thông), 8/3, 20/10, Valentine, Trung thu...
+- Giai đoạn 5 (1-2 ngày): responsive ưu tiên mobile, prefers-reduced-motion, xử lý link hỏng, PWA, Open Graph tags (để link đẹp khi gửi qua Zalo / Messenger).
+- Tuần 1: khung + encode/decode + theme sinh nhật cơ bản. Tuần 2: editor, QR, deploy. Tuần 3: theme Tết, Giáng sinh, nhạc, polish mobile. Tuần 4: PWA, ảnh (chặng 2 nếu cần), chia sẻ, README.
+
+11. THỨ TỰ NÊN LÀM
+1) Bản hoàn toàn tĩnh (chưa upload ảnh): editor + theme sinh nhật + tạo link + QR.
+2) Deploy lên Cloudflare Pages, tên project trung tính, repo private.
+3) Cho vài người quen dùng thử, xem có cần ảnh nhiều không.
+4) Nếu cần mới thêm Supabase / Cloudflare để lưu ảnh và rút ngắn link.
+
+12. MẸO VÀ BẪY
+- Âm thanh bị chặn trên mobile: thêm màn hình "Chạm để mở thiệp" ở đầu để mở khóa audio.
+- Hiệu năng: giới hạn số hạt (particle) trên máy yếu, dùng requestAnimationFrame, dọn animation khi rời trang.
+- XSS: lời chúc do người dùng nhập, luôn render bằng textContent hoặc React (tự escape), không dùng innerHTML.
+- Luôn giữ trường v (version) trong config.
+- Bản quyền: dùng nhạc và hình miễn phí bản quyền (Pixabay, Freesound, LottieFiles free).
+- Font tiếng Việt: Be Vietnam Pro, Pacifico (subset vietnamese), Dancing Script từ Google Fonts.
+
+13. CHI PHÍ
+- Code, thư viện, hosting, tạo QR: 0đ.
+- Tên miền riêng: tùy chọn, khoảng 30-300k/năm.
+- Lưu ảnh (chặng 2): 0đ trong free tier, có giới hạn.
+
+14. BƯỚC TIẾP THEO
+- Dựng bản demo chặng 1: một trang HTML chạy được gồm editor + bánh rơi + pháo + tạo link / QR, rồi phát triển tiếp từ đó.

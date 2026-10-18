@@ -1,0 +1,32 @@
+{
+  "name": "Thiệp chúc mừng động",
+  "short_name": "Thiệp",
+  "description": "Tạo thiệp chúc mừng sinh nhật có hoạt ảnh, gửi bằng link hoặc mã QR.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1d1b4b",
+  "theme_color": "#1d1b4b",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

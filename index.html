@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thiệp chúc mừng động</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1d1b4b">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Thiệp">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff6ee;--fg:#2b2233;--card:#fff;--line:#ecdfe3;--ac:#e8456f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17121f;--fg:#f4eefa;--card:#241c30;--line:#3a2d4a}}
+:root[data-theme="dark"]{--bg:#17121f;--fg:#f4eefa;--card:#241c30;--line:#3a2d4a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.5 "Be Vietnam Pro",system-ui,sans-serif}
+[hidden]{display:none!important}
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 40px}
+h1{font-family:Pacifico,cursive;font-weight:400;font-size:clamp(26px,6vw,36px);margin:4px 0 2px}
+.sub{margin:0 0 18px;opacity:.75}
+.grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:18px}
+@media(max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+label.f{display:block;font-weight:600;margin:12px 0 4px}
+label.f:first-child{margin-top:0}
+input[type=text],input[type=url],input[type=number],textarea{width:100%;font:inherit;color:inherit;background:transparent;border:1px solid var(--line);border-radius:8px;padding:9px 10px}
+textarea{min-height:92px;resize:vertical}
+input:focus-visible,textarea:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0}
+.chips span{display:inline-block;padding:8px 14px;border:1px solid var(--line);border-radius:999px}
+.chips input:checked+span{background:var(--ac);border-color:var(--ac);color:#fff}
+.chips input:focus-visible+span{outline:2px solid var(--ac);outline-offset:2px}
+.hint{font-size:13px;opacity:.65;margin:4px 0 0}
+button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:10px 16px;cursor:pointer;background:var(--ac);color:#fff}
+button.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.stage{position:relative;overflow:hidden;border-radius:14px;min-height:430px;display:flex;align-items:center;justify-content:center;color:#fff;background:#222}
+.t-birthday{background:linear-gradient(#1d1b4b,#4a2a6b)}
+.box{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:16px;width:100%;max-width:520px}
+.fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.hd{font-size:14px;letter-spacing:.06em;opacity:0;animation:fade .8s .1s forwards}
+.nm{font-family:Pacifico,cursive;font-size:clamp(34px,9vw,54px);line-height:1.2;opacity:0;animation:fade .8s .4s forwards;word-break:break-word}
+.msg{min-height:3.4em;font-size:16px;line-height:1.5;margin:10px 0;max-width:30em}
+@keyframes fade{to{opacity:1}}
+.cake{position:relative;width:250px;margin:6px 0 0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cake svg{display:block;width:100%;height:auto;overflow:visible}
+.kf{filter:drop-shadow(0 0 5px #ffb300)}
+.fw{z-index:0}
+.mail{position:absolute;left:0;top:0;width:120px;height:86px;z-index:6;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
+.mail:focus-visible .m-front{outline:2px solid #fff;outline-offset:3px}
+.mail-w{position:relative;width:100%;height:100%;perspective:700px}
+.m-back{position:absolute;inset:0;border-radius:8px;background:#fff3dc;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.m-letter{position:absolute;left:10px;top:8px;width:100px;height:70px;z-index:2;border-radius:4px;padding:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#5b2a86;background:#fff repeating-linear-gradient(transparent 0 11px,#f3e4ee 11px 12px);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.m-letter small{font-size:9px;opacity:.7}
+.m-letter em{font-family:Pacifico,cursive;font-style:normal;font-size:10px;color:#e8456f;margin-top:1px}
+.m-letter b{font-family:Pacifico,cursive;font-weight:400;line-height:1.15;word-break:break-word}
+.m-cover{position:absolute;inset:0;z-index:3;transform-style:preserve-3d}
+.m-front,.m-inner{position:absolute;inset:0;border-radius:8px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.m-front{background:linear-gradient(135deg,#ff8fab,#ff5c8a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#fff;font-size:11px;font-weight:600;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.m-front span{font-size:26px;line-height:1}
+.m-inner{transform:rotateY(180deg);background:#fff9ef;box-shadow:inset 0 0 0 1px #ecdfe3}
+.mail.attn .m-front{animation:ring 1.8s infinite}
+@keyframes ring{0%{box-shadow:0 4px 14px rgba(0,0,0,.35),0 0 0 0 rgba(255,255,255,.75)}70%,100%{box-shadow:0 4px 14px rgba(0,0,0,.35),0 0 0 14px rgba(255,255,255,0)}}
+.dim{position:absolute;inset:0;background:rgba(10,5,30,.55);z-index:5;opacity:0;pointer-events:none}
+.ph-row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.ph-row img{width:56px;height:56px;object-fit:cover;border-radius:8px;flex:none}
+.ph-row input{flex:1;min-width:0}
+.ph-x{width:34px;height:34px;padding:0;border-radius:50%;background:transparent;color:var(--fg);border:1px solid var(--line);flex:none}
+.mail-hint{position:absolute;left:12px;top:68px;z-index:6;max-width:150px;padding:6px 10px;border-radius:12px;background:rgba(255,255,255,.93);color:#5b2a86;font-size:12px;font-weight:600;line-height:1.3;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.mail.attn2 .m-front{animation-duration:1s}
+.pol{position:absolute;left:0;top:0;width:110px;margin:0;padding:7px 7px 0;background:#fff;color:#5b2a86;box-shadow:0 6px 18px rgba(0,0,0,.4);z-index:9;cursor:pointer}
+.pol img{display:block;width:96px;height:96px;object-fit:cover;background:#eee}
+.pol figcaption{min-height:34px;padding:4px 2px 6px;display:flex;align-items:center;justify-content:center;text-align:center;font:400 11px/1.25 Pacifico,"Be Vietnam Pro",cursive;word-break:break-word}
+.mail-close{position:absolute;left:0;right:0;margin:0 auto;width:max-content;z-index:10;background:rgba(255,255,255,.95);color:#5b2a86}
+.toast{position:absolute;left:0;right:0;margin:0 auto;width:max-content;max-width:86%;bottom:70px;z-index:10;padding:8px 14px;border-radius:12px;background:rgba(0,0,0,.65);color:#fff;font-size:13px;text-align:center}
+.lb{position:absolute;inset:0;z-index:12;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center;color:#fff;background:rgba(10,5,30,.88);cursor:pointer}
+.lb img{max-width:88%;max-height:60%;object-fit:contain;border:8px solid #fff;border-radius:4px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.lb p{margin:12px 0 0;font-family:Pacifico,cursive;font-size:16px;line-height:1.35;word-break:break-word}
+.lb .lb-sig{font-size:13px;opacity:.85}
+#report{position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:5;font-size:12px;color:#fff;background:rgba(0,0,0,.4);padding:8px 12px;border-radius:999px;text-decoration:none}
+.stk{display:flex;gap:14px;justify-content:center;font-size:40px;line-height:1.2;min-height:48px;margin-top:6px}
+.stk span{display:inline-block}
+.fall{position:absolute;top:0;left:0;font-size:24px;z-index:1;pointer-events:none}
+.pal{position:absolute;pointer-events:none}
+.teddy{left:-52px;bottom:-3px;width:90px}
+.gift1{right:-46px;bottom:-3px;width:68px}
+.gift2{right:-14px;bottom:-3px;width:56px}
+.gift3{right:-34px;bottom:-3px;width:44px}
+.teddy,.gift{pointer-events:auto;cursor:pointer}
+@media(max-width:380px){.cake{transform:scale(.86);transform-origin:50% 100%}}
+.balloon{position:absolute;top:0;left:0;width:50px;height:64px;border-radius:50% 50% 46% 46%;z-index:0;opacity:0;will-change:transform;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.8) 0 7%,transparent 8%),var(--c)}
+.balloon::before{content:"";position:absolute;left:50%;top:100%;width:1px;height:80px;background:rgba(255,255,255,.55)}
+.balloon::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:6px solid transparent;border-top:0;border-bottom-color:var(--c)}
+#vstage{border-radius:0;min-height:100svh}
+#gate{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;background:rgba(20,10,30,.88);color:#fff;text-align:center;padding:20px}
+#gate button{font-size:20px;padding:16px 28px}
+#back{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:5;font-size:13px;color:#fff;background:rgba(0,0,0,.4);padding:8px 12px;border-radius:999px;text-decoration:none}
+.chk{display:flex;gap:8px;align-items:center;margin-top:14px;font-weight:600;cursor:pointer}
+.chk input{width:18px;height:18px;flex:none;accent-color:var(--ac)}
+#mute{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:11;width:42px;height:42px;padding:0;border-radius:50%;background:rgba(0,0,0,.4);font-size:18px}
+.donate-box{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+a.btn{display:inline-block;font-weight:600;border-radius:10px;padding:10px 16px;background:var(--ac);color:#fff;text-decoration:none}
+.modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:rgba(10,5,30,.72);padding:16px}
+.modal-card{position:relative;width:min(92vw,380px);max-height:92vh;overflow:auto;background:var(--card);color:var(--fg);border-radius:16px;padding:20px 16px 16px;text-align:center}
+.modal-card h2{margin:0 0 10px;font-size:18px}
+.modal-card img{display:block;margin:0 auto 10px;width:100%;max-width:320px;height:auto;border-radius:10px;background:#fff}
+.modal-x{position:absolute;top:8px;right:8px;width:34px;height:34px;padding:0;border-radius:50%;background:transparent;color:var(--fg);border:1px solid var(--line)}
+#inapp{margin-bottom:14px;border-color:var(--ac)}
+#qr{display:inline-block;background:#fff;padding:8px;border-radius:8px}
+#qr img{display:block}
+#link{font-size:13px}
+@media(prefers-reduced-motion:reduce){.hd,.nm,.pic{animation-duration:.01s;animation-delay:0s}.mail.attn .m-front{animation:none}}
+</style>
+</head>
+<body>
+
+<div id="editor" class="wrap">
+  <h1>Thiệp chúc mừng động</h1>
+  <p class="sub">Chọn dịp, nhập lời chúc, tạo link hoặc mã QR gửi cho người nhận.</p>
+  <div class="row" style="margin:-6px 0 14px">
+    <button id="install" class="ghost" hidden>📲 Cài lên màn hình</button>
+    <p class="hint" id="iosHint" hidden style="margin:0">Trên iPhone: bấm nút Chia sẻ, rồi chọn "Thêm vào Màn hình chính" để cài.</p>
+  </div>
+  <div id="inapp" class="card" hidden>
+    <strong>Bạn đang mở trong ứng dụng (TikTok, Facebook, Zalo...)</strong>
+    <p class="hint" style="margin:4px 0 0">Một số nút như chia sẻ hoặc tải mã QR có thể không chạy. Hãy bấm dấu ⋯ rồi chọn "Mở bằng trình duyệt" để dùng đầy đủ.</p>
+  </div>
+  <div class="grid">
+    <div>
+      <div class="card">
+        <label class="f">Dịp</label>
+        <div class="chips">
+          <label><input type="radio" name="theme" value="birthday" checked><span>🎂 Sinh nhật</span></label>
+        </div>
+        <label class="f" for="name">Tên người nhận</label>
+        <input id="name" type="text" maxlength="40" placeholder="Ví dụ: Lan">
+        <label class="f" for="from">Từ (tên người gửi)</label>
+        <input id="from" type="text" maxlength="40" placeholder="Ví dụ: Minh">
+        <p class="hint">Có tên người gửi thì người nhận sẽ thấy một tấm thiệp nhỏ ở góc trái, chạm vào để mở thư. Để trống thì không có thiệp.</p>
+        <label class="f" for="age">Tuổi (không bắt buộc)</label>
+        <input id="age" type="number" inputmode="numeric" min="1" max="120" placeholder="Ví dụ: 20">
+        <p class="hint">Nhập tuổi để bánh có nến hình số, ví dụ 20 tuổi thì có nến số 2 và số 0. Để trống thì bánh có 3 cây nến thường.</p>
+        <label class="f" for="message">Lời chúc</label>
+        <textarea id="message" maxlength="400" placeholder="Để trống để dùng lời chúc mặc định của dịp này"></textarea>
+        <label class="f">Sticker (chọn tối đa 3)</label>
+        <div class="chips" id="stk"></div>
+        <p class="hint">Sticker sẽ bật ra dưới lời chúc và rơi nhẹ khắp màn hình.</p>
+        <label class="f">Ảnh của người nhận (tối đa 3)</label>
+        <div id="photos"></div>
+        <input id="photoFile" type="file" accept="image/*" multiple hidden>
+        <button id="addPhoto" class="ghost" type="button">＋ Thêm ảnh</button>
+        <p class="hint">Mỗi ảnh có thể kèm một dòng chú thích ngắn. Ảnh được nén ngay trên điện thoại của bạn. Cần nhập ô "Từ" để thêm ảnh vào thiệp.</p>
+        <label class="chk" id="consentWrap" hidden style="align-items:flex-start"><input type="checkbox" id="consent" style="margin-top:2px"><span style="font-weight:400">Tôi có quyền dùng các ảnh này. Ảnh phản cảm, xúc phạm hoặc nhằm hù dọa người nhận sẽ bị xóa. Ảnh tự xóa sau 15 ngày.</span></label>
+        <label class="chk"><input type="checkbox" id="music" checked><span>Nhạc nền (giai điệu hộp nhạc)</span></label>
+        <div class="row">
+          <button id="replay">▶ Xem trước</button>
+          <button id="make" class="ghost">Tạo link và QR</button>
+        </div>
+        <p id="upstat" class="hint" role="status"></p>
+      </div>
+      <div id="result" class="card" style="margin-top:18px" hidden>
+        <label class="f" for="link">Link thiệp</label>
+        <input id="link" type="text" readonly>
+        <p class="hint" id="len"></p>
+        <div class="row">
+          <button id="copy">Sao chép link</button>
+          <button id="test" class="ghost">Mở như người nhận</button>
+          <button id="share" class="ghost" hidden>Chia sẻ</button>
+        </div>
+        <div style="margin-top:14px"><div id="qr"></div></div>
+        <div class="row"><button id="dl" class="ghost">Tải mã QR (PNG)</button></div>
+        <p class="hint">Không tải được? Nhấn giữ ảnh QR rồi chọn Lưu ảnh.</p>
+        <div class="donate-box">
+          <button id="donate" class="ghost" type="button">🍜 Ủng hộ gói mì tôm</button>
+          <p class="hint">Nếu thấy hay, mời mình một gói mì tôm nhé. Cảm ơn bạn ❤️</p>
+        </div>
+      </div>
+    </div>
+    <div><div id="preview" class="stage"></div></div>
+  </div>
+</div>
+
+<div id="viewer" hidden>
+  <div id="vstage" class="stage"></div>
+  <div id="gate"><div id="gateTxt"></div><button id="open">🎁 Chạm để mở thiệp</button></div>
+  <a id="back" href="#" hidden>Tạo thiệp của bạn</a>
+  <button id="mute" hidden aria-label="Bật hoặc tắt nhạc">🔊</button>
+  <a id="report" hidden target="_blank" rel="noopener">Báo cáo thiệp này</a>
+</div>
+
+<div id="donateModal" class="modal" hidden role="dialog" aria-modal="true" aria-label="Mã QR ủng hộ">
+  <div class="modal-card">
+    <button class="modal-x" id="donateClose" type="button" aria-label="Đóng">✕</button>
+    <h2>🍜 Mời mình gói mì tôm</h2>
+    <img src="donate-qr.png" alt="Mã QR chuyển khoản ủng hộ" width="320" height="347">
+    <p class="hint">Mở ứng dụng ngân hàng rồi quét mã, hoặc lưu ảnh và chọn quét từ ảnh. Cảm ơn bạn rất nhiều ❤️</p>
+    <a class="btn" href="donate-qr.png" download="ung-ho-goi-mi-tom.png">Tải ảnh QR</a>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.2/confetti.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const STICKERS = ['💖', '🌸', '⭐', '🎉', '🦄', '🐱', '🐶', '🍓'];
+const THEMES = {
+  birthday: { cls: 't-birthday', title: 'Chúc mừng sinh nhật',
+    msg: n => 'Chúc mừng sinh nhật ' + n + '! Tuổi mới thật nhiều niềm vui, sức khỏe và may mắn nhé!' }
+};
+
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text; // textContent: an toàn trước XSS
+  return e;
+}
+
+const cakeSVG=age=>{
+  const grad=(id,a,b,c)=>'<linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+a+'"/><stop offset=".55" stop-color="'+b+'"/><stop offset="1" stop-color="'+c+'"/></linearGradient>';
+  const sp=l=>l.map(([x,y,c,a])=>'<rect x="'+x+'" y="'+y+'" width="7" height="2.6" rx="1.3" fill="'+c+'" transform="rotate('+a+' '+x+' '+y+')"/>').join('');
+  // mỗi lớp: thân bánh bo tròn + đổ bóng + kem kẹp giữa + vệt sáng + cốm màu
+  const layer=(cls,x,y,w,h,r,g,spr)=>'<g class="'+cls+'"><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+r+'" fill="url(#'+g+')"/>'+
+    '<rect x="'+(x+6)+'" y="'+(y+h*.5)+'" width="'+(w-12)+'" height="6" rx="3" fill="#fff" opacity=".6"/>'+
+    '<rect x="'+(x+9)+'" y="'+(y+5)+'" width="'+(w*.42)+'" height="5" rx="2.5" fill="#fff" opacity=".35"/>'+spr+'</g>';
+  const dr=[[80,20],[97,34],[116,16],[140,28],[158,38],[173,18]].map(([x,h])=>'<rect class="kd" x="'+x+'" y="88" width="11" height="'+h+'" rx="5.5" fill="#fff"/>').join('');
+  const sl=[100,116,134,150,166].map(x=>'<g transform="translate('+x+' 86) scale('+(age>=1?1.25:1)+')"><g class="kt"><path d="M0 0C-7-3-6.5-10-3.2-12C-1.6-13 0-12 0-10.5C0-12 1.6-13 3.2-12C6.5-10 7-3 0 0Z" fill="#e63946"/><path transform="translate(0 -2.4) scale(.6)" d="M0 0C-7-3-6.5-10-3.2-12C-1.6-13 0-12 0-10.5C0-12 1.6-13 3.2-12C6.5-10 7-3 0 0Z" fill="#ff9aa9"/><circle cx="-2" cy="-8" r=".7" fill="#fff3b0"/><circle cx="2" cy="-8" r=".7" fill="#fff3b0"/><circle cx="0" cy="-5" r=".7" fill="#fff3b0"/></g></g>').join('');
+  // Nến hình chữ số (giống nến số trên bánh thật): nhập tuổi 20 → nến số 2 và số 0. Không nhập tuổi → 3 nến thường.
+  const DIG = {
+    '0': 'M10 2C19 2 19 32 10 32C1 32 1 2 10 2Z', '1': 'M3 9L11 2V32',
+    '2': 'M2 9C2 -1 18 -1 18 9C18 17 2 24 2 32H18',
+    '3': 'M3 4C8 0 17 2 17 9C17 14 12 16 8 16C14 16 18 19 18 24C18 31 8 35 2 29',
+    '4': 'M14 32V2L2 22H19', '5': 'M17 2H4L3 15C10 11 18 14 18 23C18 31 8 35 2 29',
+    '6': 'M16 3C8 -1 2 8 2 22C2 37 18 37 18 24C18 13 5 12 2 22', '7': 'M2 2H18C14 12 11 22 9 32',
+    '8': 'M10 16C2 14 2 2 10 2C18 2 18 14 10 16C1 18 1 32 10 32C19 32 19 18 10 16Z',
+    '9': 'M4 31C12 35 18 26 18 12C18 -3 2 -3 2 10C2 21 15 22 18 12'
+  };
+  const TOP = { '0': [10, 2], '1': [11, 2], '2': [10, 1], '3': [10, 1], '4': [14, 2], '5': [10, 2], '6': [11, 1.5], '7': [10, 2], '8': [10, 2], '9': [10, 1] };
+  const MID = { '1': 7, '4': 10.5 };   // tâm ngang của nét chữ (mặc định 10)
+  const COL = [['#ff7aa2', '#d63d6a'], ['#4cc9f0', '#2a9bc4'], ['#ffd166', '#e0a82e']];
+  const digitCandle = (ch, cx, i) => {
+    const [fill, edge] = COL[i % 3], c = MID[ch] || 10, k = 1, gy = 46;
+    const ax = +(cx + (TOP[ch][0] - c) * k).toFixed(1), ay = +(gy + TOP[ch][1] * k - 4.5).toFixed(1);
+    const d = DIG[ch];
+    return '<g class="kcn"><g transform="translate(' + cx + ' ' + gy + ') scale(' + k + ') translate(-' + c + ' 0)" fill="none" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="' + d + '" stroke="' + edge + '" stroke-width="9"/><path d="' + d + '" stroke="' + fill + '" stroke-width="6.4"/>' +
+      '<path d="' + d + '" stroke="#fff" stroke-opacity=".4" stroke-width="1.8" transform="translate(-1.4 -1.4)"/></g>' +
+      '<rect x="' + (ax - .8) + '" y="' + (ay - 6) + '" width="1.6" height="6.5" rx=".8" fill="#5a3a22"/>' +
+      '<ellipse class="kf" cx="' + ax + '" cy="' + (ay - 12) + '" rx="4.5" ry="7" fill="#ffd54a"/></g>';
+  };
+  const digits = age >= 1 ? String(age).split('') : [];
+  const cn = digits.length
+    ? digits.map((ch, i) => digitCandle(ch, 130 + (i - (digits.length - 1) / 2) * 33, i)).join('')
+    : [104, 127, 150].map(x => '<g class="kcn"><rect x="' + x + '" y="56" width="6" height="26" rx="2" fill="#ff5c8a"/><ellipse class="kf" cx="' + (x + 3) + '" cy="48" rx="4.5" ry="7" fill="#ffd54a"/></g>').join('');
+  return '<svg viewBox="0 0 260 230"><defs>'+grad('g1','#ffc2d1','#ff8fab','#f06f93')+grad('g2','#ffeaa8','#ffd166','#f2b84b')+grad('g3','#b9e3f5','#8ecae6','#6db4d6')+'</defs>'+
+    '<ellipse cx="130" cy="218" rx="118" ry="8" fill="#000" opacity=".18"/>'+
+    '<ellipse cx="130" cy="214" rx="124" ry="10" fill="#e9e6f5"/>'+
+    layer('k1',30,164,200,48,18,'g1',sp([[48,176,'#fff59d',25],[84,203,'#b9fbc0',-30],[120,177,'#a0c4ff',60],[160,204,'#fff',-20],[196,178,'#ffd6a5',40]]))+
+    layer('k2',55,122,150,46,16,'g2',sp([[72,132,'#fff',20],[108,158,'#caffbf',-35],[150,133,'#ffadad',50],[180,157,'#bdb2ff',-15]]))+
+    layer('k3',78,86,104,40,14,'g3','')+
+    '<rect class="kp" x="124" y="-50" width="12" height="130" rx="6" fill="#fff"/>'+
+    '<g class="kc"><rect x="72" y="80" width="116" height="16" rx="8" fill="#fff"/><rect x="80" y="83" width="40" height="3" rx="1.5" fill="#ffe5ec"/></g>'+dr+cn+sl+'</svg>';
+};
+const TEDDY='<svg viewBox="0 0 60 72">'+
+  '<circle cx="14" cy="12" r="8" fill="#c98a5a"/><circle cx="14" cy="12" r="4" fill="#f0c9a0"/>'+
+  '<circle cx="46" cy="12" r="8" fill="#c98a5a"/><circle cx="46" cy="12" r="4" fill="#f0c9a0"/>'+
+  '<ellipse cx="19" cy="64" rx="8" ry="6" fill="#c98a5a"/><ellipse cx="41" cy="64" rx="8" ry="6" fill="#c98a5a"/>'+
+  '<ellipse cx="14" cy="50" rx="5.5" ry="9" fill="#c98a5a" transform="rotate(18 14 50)"/>'+
+  '<ellipse cx="30" cy="52" rx="15" ry="16" fill="#d9985f"/><ellipse cx="30" cy="55" rx="9" ry="10" fill="#f3d5b0"/>'+
+  '<g transform="translate(45 46)"><ellipse class="arm" cx="0" cy="-8" rx="5.5" ry="9" fill="#c98a5a"/></g>'+
+  '<circle cx="30" cy="25" r="17" fill="#d9985f"/>'+
+  '<ellipse cx="30" cy="31" rx="7.5" ry="6" fill="#f3d5b0"/><ellipse cx="30" cy="28" rx="2.8" ry="2" fill="#5a3a22"/>'+
+  '<circle cx="23.5" cy="21.5" r="2" fill="#3b2a1f"/><circle cx="36.5" cy="21.5" r="2" fill="#3b2a1f"/>'+
+  '<path d="M27 32.5Q30 35.5 33 32.5" stroke="#5a3a22" stroke-width="1.4" fill="none" stroke-linecap="round"/>'+
+  '<path d="M30 43L23 39V47Z M30 43L37 39V47Z" fill="#e63946"/><circle cx="30" cy="43" r="2.2" fill="#c1121f"/></svg>';
+const GIFT=(b,l,r)=>'<svg viewBox="0 0 50 50"><rect x="6" y="22" width="38" height="26" rx="3" fill="'+b+'"/><rect x="22" y="22" width="6" height="26" fill="'+r+'"/>'+
+  '<g class="lid"><rect x="3" y="14" width="44" height="10" rx="3" fill="'+l+'"/><rect x="22" y="14" width="6" height="10" fill="'+r+'"/>'+
+  '<ellipse cx="19" cy="11" rx="6.5" ry="4" transform="rotate(-20 19 11)" fill="'+r+'"/><ellipse cx="31" cy="11" rx="6.5" ry="4" transform="rotate(20 31 11)" fill="'+r+'"/><circle cx="25" cy="12" r="2.6" fill="'+r+'"/></g></svg>';
+function buildCake(age) {
+  const c = el('div', 'cake');
+  c.innerHTML = cakeSVG(age) + '<div class="pal teddy">' + TEDDY + '</div>' +
+    '<div class="pal gift gift1">' + GIFT('#c77dff', '#a35fe0', '#ffd166') + '</div>' +   // lớn, tím, ở sau
+    '<div class="pal gift gift2">' + GIFT('#4cc9f0', '#35a9d1', '#ffffff') + '</div>' +   // vừa, xanh dương
+    '<div class="pal gift gift3">' + GIFT('#ef233c', '#c1121f', '#ffd166') + '</div>';    // nhỏ, đỏ, ở trước
+  return c;
+}
+
+// Pháo hoa: tên lửa bay lên → nổ → tia sáng rơi xuống theo trọng lực
+function fireworks(cv) {
+  const c = cv.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
+  let W = 0, H = 0, raf = 0, last = performance.now();
+  const rockets = [], parts = [], dots = [];
+  const size = () => { W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; c.setTransform(dpr, 0, 0, dpr, 0, 0); };
+  size();
+  const ro = window.ResizeObserver ? new ResizeObserver(size) : null;
+  if (ro) ro.observe(cv);
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const spark = (x, y, vx, vy, h, o) => { if (parts.length < 1200) parts.push(Object.assign({ x, y, vx, vy, h, l: 60, s: 2, life: 1, d: .012, f: .97, g: .05 }, o)); };
+  function explode(x, y) {
+    const h = rnd(0, 360), n = Math.round(rnd(70, 110)), ring = Math.random() < .35;
+    for (let i = 0; i < n; i++) {
+      const a = i / n * 6.283, sp = ring ? 4.2 : rnd(1.2, 5);
+      spark(x, y, Math.cos(a) * sp, Math.sin(a) * sp, h + rnd(-18, 18), { d: rnd(.008, .014), g: .045, s: rnd(1.6, 2.6) });
+    }
+    if (Math.random() < .4) for (let i = 0; i < 30; i++) { const a = rnd(0, 6.283), sp = rnd(.5, 2); spark(x, y, Math.cos(a) * sp, Math.sin(a) * sp, h + 180, { l: 80, d: .01, g: .06, s: 1.8 }); }
+    for (let i = 0; i < 24; i++) { const a = rnd(0, 6.283), sp = rnd(.5, 3); spark(x, y, Math.cos(a) * sp, Math.sin(a) * sp - 1, 45, { l: 70, d: .006, g: .09, f: .96, s: 1.4 }); } // hoa pháo vàng rơi chậm
+  }
+  function launch(x) { rockets.push({ x: x == null ? rnd(W * .12, W * .88) : x, y: H + 10, vy: -rnd(.011, .014) * H, ty: H * rnd(.12, .4) }); }
+  // Trái tim nhỏ: các đóm sáng lần lượt hiện dọc theo đường viền, lấp lánh, trôi lên nhẹ rồi tắt dần
+  function heart(x, y, sc, h) {
+    if (dots.length > 1200) return;
+    const n = 64;
+    for (let i = 0; i < n; i++) {
+      const a = i / n * 6.283;
+      const px = 16 * Math.pow(Math.sin(a), 3), py = -(13 * Math.cos(a) - 5 * Math.cos(2 * a) - 2 * Math.cos(3 * a) - Math.cos(4 * a));
+      dots.push({ x: x + px * sc, y: y + py * sc, vx: rnd(-.03, .03), vy: -rnd(.05, .15), h: h + rnd(-12, 12), age: -i / n * 1.1, life: rnd(3.8, 5), ph: rnd(0, 6.283), r: rnd(1.7, 2.6) });
+    }
+  }
+  const hues = [335, 345, 350, 320, 45];
+  function randomHeart() { heart(rnd(W * .06, W * .94), rnd(H * .08, H * .92), rnd(1.1, 1.8), hues[Math.floor(Math.random() * hues.length)]); }
+  function step(t) {
+    raf = requestAnimationFrame(step);
+    const dt = Math.min((t - last) / 1000, .05), k = Math.min((t - last) / 16.7, 2.5), fa = Math.min(.28 * k, .7); last = t;
+    c.globalCompositeOperation = 'destination-out';
+    c.fillStyle = 'rgba(0,0,0,' + fa + ')';
+    c.fillRect(0, 0, W, H);
+    c.globalCompositeOperation = 'lighter';
+    for (let i = rockets.length; i--;) {
+      const r = rockets[i]; r.y += r.vy * k;
+      spark(r.x + rnd(-.6, .6), r.y, 0, rnd(.2, .8), 40, { l: 75, d: .06, g: .01, s: 1.5 });
+      if (r.y <= r.ty) { explode(r.x, r.y); rockets.splice(i, 1); continue; }
+      c.fillStyle = '#fff'; c.beginPath(); c.arc(r.x, r.y, 2.2, 0, 6.283); c.fill();
+    }
+    for (let i = parts.length; i--;) {
+      const p = parts[i], fr = Math.pow(p.f, k);
+      p.vx *= fr; p.vy = p.vy * fr + p.g * k; p.x += p.vx * k; p.y += p.vy * k; p.life -= p.d * k;
+      if (p.life <= 0 || p.y > H + 10) { parts.splice(i, 1); continue; }
+      c.fillStyle = 'hsla(' + p.h + ',100%,' + p.l + '%,' + p.life + ')';
+      c.beginPath(); c.arc(p.x, p.y, p.s * (.4 + p.life * .6), 0, 6.283); c.fill();
+    }
+    for (let i = dots.length; i--;) {
+      const d = dots[i]; d.age += dt;
+      if (d.age < 0) continue;
+      if (d.age > d.life) { dots.splice(i, 1); continue; }
+      d.x += d.vx * k; d.y += d.vy * k;
+      const u = d.age / d.life, env = u < .15 ? u / .15 : (u > .65 ? (1 - u) / .35 : 1);
+      const al = env * .65 * (.82 + .18 * Math.sin(d.age * 9 + d.ph)) * fa;   // nhân fa để bù lớp mờ dần mỗi khung hình
+      c.fillStyle = 'hsla(' + d.h + ',100%,62%,' + al * .22 + ')'; c.beginPath(); c.arc(d.x, d.y, d.r * 3.6, 0, 6.283); c.fill();
+      c.fillStyle = 'hsla(' + d.h + ',100%,80%,' + al + ')'; c.beginPath(); c.arc(d.x, d.y, d.r, 0, 6.283); c.fill();
+    }
+  }
+  raf = requestAnimationFrame(step);
+  return { launch, heart, randomHeart, stop() { cancelAnimationFrame(raf); if (ro) ro.disconnect(); } };
+}
+
+// Bóng bay bay lên, đung đưa, lặp lại
+function balloons(stage) {
+  const cols = ['#ff5c8a', '#ffd166', '#4cc9f0', '#80ed99', '#c77dff', '#ff9f1c'];
+  const W = stage.clientWidth, H = stage.clientHeight, r = gsap.utils.random;
+  for (let i = 0; i < 9; i++) {
+    const b = el('div', 'balloon');
+    b.style.setProperty('--c', cols[i % cols.length]);
+    stage.prepend(b);
+    const place = () => gsap.set(b, { x: r(0, Math.max(W - 60, 10)), y: H + 90, scale: r(.75, 1.2), opacity: 1 });
+    place(); gsap.set(b, { rotation: -6 });
+    gsap.to(b, { y: -220, duration: r(8, 13), ease: 'none', delay: i * .55, repeat: -1, repeatDelay: r(0, 2), onRepeat: place });
+    gsap.to(b, { xPercent: 60, rotation: 6, duration: r(2, 3.5), ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  }
+}
+
+// Phát hoạt ảnh sinh nhật vào một khung; trả về hàm dọn dẹp
+function play(stage, cfg) {
+  const T = THEMES.birthday;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const timers = [], tl = gsap.timeline();
+  if (calm) tl.timeScale(3);
+  stage.innerHTML = '';
+  stage.className = 'stage ' + T.cls;
+
+  const cv = el('canvas', 'fx'), fwc = el('canvas', 'fx fw'), box = el('div', 'box');
+  box.append(el('div', 'hd', T.title), el('div', 'nm', cfg.name || 'Bạn'));
+  const age = Number.isInteger(cfg.age) && cfg.age >= 1 && cfg.age <= 120 ? cfg.age : 0;
+  const cake = buildCake(age);
+  box.append(cake);
+  const msg = el('p', 'msg');
+  box.append(msg);
+  const list = (Array.isArray(cfg.st) ? cfg.st : []).filter(n => Number.isInteger(n) && STICKERS[n]).slice(0, 3).map(n => STICKERS[n]);
+  const stk = el('div', 'stk');
+  list.forEach(e => stk.append(el('span', null, e)));
+  if (list.length) box.append(stk);
+  stage.append(fwc, cv, box);
+
+  const fw = fireworks(fwc);
+  const fire = window.confetti ? confetti.create(cv, { resize: true, useWorker: false }) : () => {};
+  const text = cfg.message || T.msg(cfg.name || 'bạn');
+  const typeAt = at => { const o = { n: 0 }; tl.to(o, { n: text.length, duration: text.length * .04, ease: 'none', onUpdate: () => { msg.textContent = text.slice(0, Math.round(o.n)); } }, at); };
+  const burst = () => {
+    fire({ particleCount: 140, spread: 90, origin: { y: .6 } });
+    fire({ particleCount: 60, angle: 60, spread: 60, origin: { x: 0, y: .7 } });
+    fire({ particleCount: 60, angle: 120, spread: 60, origin: { x: 1, y: .7 } });
+  };
+  const volley = (at, n, gap) => { for (let i = 0; i < (calm ? 1 : n); i++) tl.call(() => fw.launch(), null, at + i * gap); };
+  const loop = ms => timers.push(setInterval(() => fw.launch(), ms));
+  const q = s => cake.querySelectorAll(s);
+  // Đóm sáng xếp thành trái tim nhỏ hiện ngẫu nhiên khắp nền, cùng lớp với pháo hoa
+  if (!calm) tl.call(() => timers.push(setInterval(() => fw.randomHeart(), 900)), null, 1.2);
+
+  // Lớp bánh: rơi nhanh dần → chạm đĩa thì bẹp xuống → bật lại kiểu thạch.
+  // Lớp bên dưới cũng bị đè nhẹ khi lớp trên chạm vào.
+  const land = (s, below, at) => {
+    tl.fromTo(s, { y: -420, opacity: 0, scaleX: 1, scaleY: 1, transformOrigin: '50% 100%' }, { y: 0, opacity: 1, duration: .62, ease: 'power2.in' }, at)
+      .to(s, { scaleY: .8, scaleX: 1.08, duration: .1, ease: 'power1.out' }, at + .62)
+      .to(s, { scaleY: 1, scaleX: 1, duration: 1, ease: 'elastic.out(1.1,.28)' }, at + .72);
+    if (below) tl.to(below, { scaleY: .93, scaleX: 1.025, duration: .1, ease: 'power1.out' }, at + .62)
+      .to(below, { scaleY: 1, scaleX: 1, duration: .9, ease: 'elastic.out(1,.3)' }, at + .72);
+  };
+  land(q('.k1'), null, .3); land(q('.k2'), q('.k1'), 1.45); land(q('.k3'), q('.k2'), 2.6);
+
+  // Kem rót từ trên xuống: dòng kem rơi → loang ra mặt bánh → chảy dần xuống thân bánh → đung đưa như kem lỏng
+  tl.fromTo(q('.kp'), { scaleY: 0, scaleX: 1, opacity: 1, transformOrigin: '50% 0%' }, { scaleY: 1, duration: .5, ease: 'power1.in' }, 3.7);
+  tl.fromTo(q('.kc'), { y: -6, scaleX: .15, opacity: 0, transformOrigin: '50% 50%' }, { y: 0, scaleX: 1, opacity: 1, duration: .9, ease: 'back.out(1.8)' }, 4.1);
+  tl.to(q('.kp'), { scaleX: 0, opacity: 0, duration: .5, ease: 'power2.in' }, 4.35);
+  tl.fromTo(q('.kd'), { scaleY: 0, transformOrigin: '50% 0%' }, { scaleY: 1, duration: 2.2, ease: 'power1.out', stagger: { each: .15, from: 'random' } }, 4.4);
+  tl.call(() => gsap.to(q('.kd'), { scaleY: 1.07, duration: 2.2, ease: 'sine.inOut', yoyo: true, repeat: -1, stagger: { each: .35, from: 'random' } }), null, 7.6);
+  // Nến rơi từ trên xuống cắm vào kem
+  const cn = q('.kcn'), fl = q('.kf'), st = q('.kt');
+  const cs = cn.length > 3 ? Math.min(.28, .9 / (cn.length - 1)) : .28;
+  cn.forEach((c, i) => land(c, null, 5 + i * cs));
+  // Các lát dâu nhỏ (cao bằng nửa cây nến) rơi xuống, xoay rồi nằm nghiêng phía trước nến
+  const ang = [-72, 64, -58, 76, -66];
+  st.forEach((x, i) => {
+    const at = 5.9 + i * .15;
+    land(x, null, at);
+    tl.fromTo(x, { rotation: ang[i] + gsap.utils.random(-120, 120) }, { rotation: ang[i], duration: .62, ease: 'power1.out' }, at);
+  });
+  // Lửa nến bật ra rồi nhấp nháy
+  tl.from(fl, { scale: 0, transformOrigin: '50% 100%', duration: .45, stagger: cn.length > 3 ? .08 : .14, ease: 'back.out(3)' }, 6.4);
+  tl.call(() => gsap.to(fl, { scaleY: 1.2, scaleX: .88, duration: .16, yoyo: true, repeat: -1, ease: 'sine.inOut', stagger: .04 }), null, 7.2);
+  // Gấu bông nhảy vào từ bên trái; ba hộp quà (lớn ở sau, nhỏ ở trước) rơi xuống bên phải, cùng mặt đất với gấu
+  const teddy = cake.querySelector('.teddy'), arm = teddy.querySelector('.arm'), far = stage.clientWidth / 2 + 120;
+  gsap.set(arm, { rotation: 25, transformOrigin: '50% 100%' });
+  gsap.set(teddy, { transformOrigin: '50% 100%' });
+  const hop = () => [
+    { y: -42, scaleY: 1.06, scaleX: .95, duration: .22, ease: 'power2.out' },
+    { y: 0, scaleY: .88, scaleX: 1.08, duration: .18, ease: 'power2.in' },
+    { scaleY: 1, scaleX: 1, duration: .1, ease: 'sine.out' }
+  ];
+  tl.fromTo(teddy, { x: -far }, { x: 0, duration: 1.5, ease: 'power1.out' }, 5.2);
+  tl.to(teddy, { keyframes: [...hop(), ...hop(), ...hop()] }, 5.2);
+  tl.call(() => gsap.to(arm, { keyframes: [{ rotation: 55, duration: .3 }, { rotation: 25, duration: .3 }, { rotation: 55, duration: .3 }, { rotation: 25, duration: .3 }], ease: 'sine.inOut', repeat: -1, repeatDelay: 2.5 }), null, 6.9);
+  // Mỗi hộp: rơi nhanh dần → chạm đất bẹp xuống → nảy lên → rơi lại → nảy nhỏ → nằm yên
+  cake.querySelectorAll('.gift').forEach((g, i) => {
+    const at = 5 + i * .45;
+    tl.fromTo(g, { y: -420, opacity: 0, scaleX: 1, scaleY: 1, transformOrigin: '50% 100%' }, { y: 0, opacity: 1, duration: .6, ease: 'power2.in' }, at)
+      .to(g, { keyframes: [
+        { scaleY: .8, scaleX: 1.1, duration: .09, ease: 'power1.out' },
+        { y: -22, scaleY: 1.06, scaleX: .96, duration: .2, ease: 'power2.out' },
+        { y: 0, scaleY: .9, scaleX: 1.06, duration: .17, ease: 'power2.in' },
+        { y: -7, scaleY: 1.02, scaleX: .99, duration: .12, ease: 'power2.out' },
+        { y: 0, scaleY: 1, scaleX: 1, duration: .4, ease: 'sine.out' }
+      ] }, at + .6);
+  });
+  // Bánh "thở" nhẹ khi đứng yên
+  let ready = false;
+  tl.call(() => {
+    ready = true;
+    gsap.to(q('.k1,.k2,.k3'), { scaleY: 1.015, scaleX: .992, transformOrigin: '50% 100%', duration: 2.2, yoyo: true, repeat: -1, ease: 'sine.inOut', stagger: .15 });
+  }, null, 7.6);
+  // Chạm vào bánh để bánh rung như thạch
+  cake.onclick = () => {
+    if (!ready) return;
+    gsap.fromTo(q('.k1,.k2,.k3'), { scaleY: .9, scaleX: 1.05, transformOrigin: '50% 100%' }, { scaleY: 1, scaleX: 1, duration: 1.1, ease: 'elastic.out(1,.25)', stagger: .06 });
+  };
+
+  // ---------- Tương tác: thiệp nhỏ ở góc trái, chạm gấu, chạm hộp quà ----------
+  let mailKill = () => {};
+  const rectIn = e => { const r = e.getBoundingClientRect(), b = stage.getBoundingClientRect(); return { x: r.left - b.left, y: r.top - b.top, w: r.width, h: r.height, W: b.width, H: b.height }; };
+  // Biểu tượng bay lên rồi mờ dần (tim của gấu, lấp lánh của hộp quà)
+  const rise = (list, rc, count, sp, hgt, z = 4) => {
+    for (let i = 0; i < count; i++) {
+      const h = el('span', 'fall', list[i % list.length]);
+      h.style.cssText = 'left:' + (rc.x + rc.w / 2) + 'px;top:' + (rc.y + rc.h * .15) + 'px;font-size:' + (16 + Math.random() * 12) + 'px;z-index:' + z;
+      stage.append(h);
+      gsap.fromTo(h, { scale: .4, opacity: 0, x: 0, y: 0 },
+        { scale: 1.1, opacity: 1, x: gsap.utils.random(-sp, sp), y: -gsap.utils.random(hgt * .6, hgt), duration: .5, ease: 'power2.out', delay: .12 * i,
+          onComplete: () => gsap.to(h, { opacity: 0, y: '-=30', duration: .6, onComplete: () => h.remove() }) });
+    }
+  };
+
+  // Chạm gấu: nhảy hai nhịp, vẫy tay thật nhanh và thả tim bay lên
+  let teddyBusy = false;
+  teddy.onclick = ev => {
+    ev.stopPropagation();
+    if (!ready || teddyBusy) return;
+    teddyBusy = true;
+    gsap.timeline({ onComplete: () => { teddyBusy = false; } })
+      .to(teddy, { keyframes: [
+        { y: -44, scaleY: 1.08, scaleX: .94, duration: .25, ease: 'power2.out' },
+        { y: 0, scaleY: .86, scaleX: 1.1, duration: .2, ease: 'power2.in' },
+        { y: -30, scaleY: 1.05, scaleX: .96, duration: .2, ease: 'power2.out' },
+        { y: 0, scaleY: .9, scaleX: 1.08, duration: .17, ease: 'power2.in' },
+        { scaleY: 1, scaleX: 1, duration: .2, ease: 'sine.out' }] }, 0)
+      .to(arm, { rotation: 70, duration: .15, yoyo: true, repeat: 7, ease: 'sine.inOut' }, 0);
+    rise(['💖', '💕'], rectIn(teddy), 7, 60, 140);
+  };
+
+  // Chạm hộp quà: nắp mở, nghiêng và lơ lửng 2-3 giây rồi tự đóng lại
+  cake.querySelectorAll('.gift').forEach(g => {
+    let busy = false;
+    g.onclick = ev => {
+      ev.stopPropagation();
+      if (!ready || busy) return;
+      busy = true;
+      const lid = g.querySelector('.lid'), n = Math.max(1, Math.round(gsap.utils.random(2, 3) / .5) - 1);
+      gsap.timeline({ onComplete: () => { busy = false; } })
+        .to(lid, { y: -24, rotation: -24, transformOrigin: '50% 50%', duration: .45, ease: 'back.out(2.5)' })
+        .to(lid, { y: -32, rotation: -16, duration: .5, yoyo: true, repeat: n, ease: 'sine.inOut' })
+        .to(lid, { y: 0, rotation: 0, duration: .4, ease: 'bounce.out' });
+      rise(['✨', '⭐', '✨'], rectIn(g), 4, 25, 80);
+    };
+  });
+
+  // Thiệp nhỏ ở góc trái (có khi người tạo nhập tên người gửi hoặc thêm ảnh): thu hút chú ý; chạm vào thì thiệp bay ra giữa,
+  // mở ra, lá thư "From ... with love" trồi lên, lắc lư 3-5 giây rồi bay về thiệp.
+  // Có ảnh: ảnh polaroid trượt ra khỏi thiệp (chạm để xem lớn), bấm "Đóng thiệp" thì ảnh về lại thiệp, thiệp đóng và trở về góc.
+  // Không ảnh: thiệp tự đóng ngay sau khi lá thư bay về.
+  const sender = typeof cfg.from === 'string' ? cfg.from.trim().slice(0, 40) : '';
+  const photos = (Array.isArray(cfg.ph) ? cfg.ph : []).slice(0, 3)
+    .map(x => Array.isArray(x) ? x : [x, ''])
+    .filter(x => typeof x[0] === 'string' && /^[a-z0-9]{8,24}$/.test(x[0]))
+    .map(x => ({ id: x[0], cap: typeof x[1] === 'string' ? x[1].slice(0, 40) : '' }));
+  const srcOf = id => (cfg._local && cfg._local[id]) || photoUrl(id);
+  if (sender || photos.length) {
+    const who = sender || 'Một người thương bạn';
+    const mail = el('div', 'mail'), dim = el('div', 'dim');
+    mail.setAttribute('role', 'button'); mail.tabIndex = 0; mail.setAttribute('aria-label', 'Mở thiệp từ ' + who);
+    mail.innerHTML = '<div class="mail-w"><div class="m-back"></div><div class="m-letter"><small>From</small><b></b><em>with love 💕</em></div>' +
+      '<div class="m-cover"><div class="m-front"><span>🎂</span>Happy Birthday</div><div class="m-inner"></div></div></div>';
+    const nameEl = mail.querySelector('b');
+    nameEl.textContent = who;
+    nameEl.style.fontSize = (who.length > 16 ? 11 : who.length > 9 ? 14 : 18) + 'px';
+    stage.append(dim, mail);
+    const w = mail.querySelector('.mail-w'), cover = mail.querySelector('.m-cover'), letter = mail.querySelector('.m-letter');
+    gsap.set(mail, { x: 12, y: 12, scale: 0, opacity: 0, transformOrigin: '0 0' });
+    gsap.set(cover, { transformOrigin: '0% 50%' });
+    let wig = null, mailBusy = false, opened = false, photosOpen = false, loaded = null, lb = null, closeBtn = null, cardTy = 0;
+    let mailTl = null, photoTl = null, closeTl = null, cardTl = null, okData = [], pols = [];
+    const onKey = e => { if (e.key === 'Escape') { if (lb) lb.click(); else closeAll(); } };
+    addEventListener('keydown', onKey);
+    mailKill = () => { removeEventListener('keydown', onKey); [mailTl, photoTl, closeTl, cardTl].forEach(t => t && t.kill()); if (wig) wig.kill(); };
+    const startWig = () => {
+      if (calm) return;
+      if (wig) wig.kill();
+      gsap.set(w, { rotation: 0, transformOrigin: '50% 100%' });
+      wig = gsap.to(w, { keyframes: [{ rotation: -9, duration: .1 }, { rotation: 9, duration: .1 }, { rotation: -7, duration: .1 }, { rotation: 7, duration: .1 }, { rotation: 0, duration: .1 }], ease: 'sine.inOut', repeat: -1, repeatDelay: 1.8 });
+    };
+    const hint = el('div', 'mail-hint', photos.length ? 'Có thư và ảnh dành cho bạn 💌' : 'Có thư dành cho bạn 💌');
+    gsap.set(hint, { opacity: 0 }); stage.append(hint);
+    tl.fromTo(mail, { scale: 0, opacity: 0 }, { scale: .55, opacity: 1, duration: .8, ease: 'back.out(2)' }, 2);
+    tl.call(() => { mail.classList.add('attn'); startWig(); }, null, 3);
+    // Khi lời chúc gõ xong: nhắc người nhận mở thiệp (thiệp nhấp nháy mạnh hơn, hiện dòng gợi ý rồi mờ dần)
+    tl.call(() => { if (opened) return; mail.classList.add('attn2'); gsap.to(hint, { opacity: 1, duration: .6 }); gsap.to(hint, { opacity: 0, delay: 10, duration: .6 }); }, null, 6.8 + text.length * .04 + .3);
+
+    const toast = m => {
+      const t = el('div', 'toast', m); stage.append(t);
+      gsap.fromTo(t, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .4 });
+      gsap.to(t, { opacity: 0, delay: 3.2, duration: .5, onComplete: () => t.remove() });
+    };
+    const loadPhotos = () => Promise.all(photos.map(ph => new Promise(res => {
+      const im = new Image(); let done = false;
+      const fin = ok => { if (!done) { done = true; res(ok ? { ph, src: im.src } : null); } };
+      im.onload = () => fin(true); im.onerror = () => fin(false);
+      setTimeout(() => fin(false), 8000);
+      im.src = srcOf(ph.id);
+    })));
+
+    // Icon dễ thương bay ra từ lá thư: mỗi icon nở ra, trôi lên và sang bên trong khoảng 3 giây rồi mờ dần
+    const CUTE = ['🧸', '💖', '🎀', '⭐', '🌸', '🦋', '🍓', '🎈', '💌', '✨', '🐥', '🌈'];
+    const spawnIcon = () => {
+      const r = rectIn(letter), h = el('span', 'fall', CUTE[Math.floor(Math.random() * CUTE.length)]);
+      h.style.cssText = 'left:' + (r.x + r.w / 2 - 12) + 'px;top:' + (r.y + r.h * .3) + 'px;font-size:' + (22 + Math.random() * 14) + 'px;z-index:8';
+      stage.append(h);
+      gsap.set(h, { scale: 0, opacity: 0, rotation: gsap.utils.random(-30, 30) });
+      const dur = gsap.utils.random(2.6, 3.4);
+      gsap.timeline({ onComplete: () => h.remove() })
+        .to(h, { scale: 1, opacity: 1, duration: .45, ease: 'back.out(2.5)' }, 0)
+        .to(h, { x: gsap.utils.random(-140, 140), y: -gsap.utils.random(150, 250), rotation: '+=' + gsap.utils.random(-50, 50), duration: dur, ease: 'sine.out' }, 0)
+        .to(h, { opacity: 0, duration: .8, ease: 'sine.in' }, dur - .8);
+    };
+
+    // Đóng thiệp: bìa đóng lại, thiệp bay về góc, nền sáng lại
+    const finish = () => { mailBusy = false; dim.style.pointerEvents = 'none'; cv.style.zIndex = ''; mail.classList.add('attn'); startWig(); };
+    const closeCard = () => {
+      cardTl = gsap.timeline({ onComplete: finish });
+      cardTl.to(cover, { rotationY: 0, duration: .7, ease: 'power2.inOut' })
+        .to(mail, { x: 12, y: 12, scale: .55, duration: .8, ease: 'power2.inOut' }, '>-0.1')
+        .to(dim, { opacity: 0, duration: .5 }, '<');
+    };
+
+    // Xem ảnh lớn: phóng to chậm kèm chú thích và chữ ký, chạm để đóng
+    const openLightbox = i => {
+      if (lb || !photosOpen) return;
+      const { ph, src } = okData[i];
+      const box = el('div', 'lb'), im = el('img'), c1 = el('p', 'lb-cap', ph.cap), c2 = el('p', 'lb-sig', 'From ' + who + ' with love 💕');
+      box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true');
+      im.src = src; im.alt = '';
+      box.append(im, c1, c2); stage.append(box); lb = box;
+      gsap.fromTo(box, { opacity: 0 }, { opacity: 1, duration: .5 });
+      gsap.fromTo(im, { scale: .6, rotation: -4 }, { scale: 1, rotation: 0, duration: 1.2, ease: 'back.out(1.2)' });
+      gsap.from([c1, c2], { opacity: 0, y: 10, duration: .8, delay: .7, stagger: .2 });
+      rise(['💖', '💕', '✨'], { x: stage.clientWidth / 2 - 10, y: stage.clientHeight * .5, w: 20, h: 20 }, 8, 130, 170, 14);
+      box.onclick = () => { box.onclick = null; gsap.to(box, { opacity: 0, duration: .4, onComplete: () => { box.remove(); if (lb === box) lb = null; } }); };
+    };
+
+    // Ảnh polaroid trượt ra khỏi thiệp và xòe như quạt
+    const showPhotos = ok => {
+      photosOpen = true; okData = ok;
+      const W = stage.clientWidth, H = stage.clientHeight, n = ok.length, c = (n - 1) / 2;
+      const sp = Math.min(120, (W - 126) / 2), cx = W / 2 - 55;
+      photoTl = gsap.timeline();
+      ok.forEach(({ ph, src }, i) => {
+        const fig = el('figure', 'pol'), im = el('img'), cap = el('figcaption', null, ph.cap || '💕');
+        im.src = src; im.alt = ''; fig.append(im, cap);
+        fig.setAttribute('role', 'button'); fig.tabIndex = 0; fig.setAttribute('aria-label', 'Xem ảnh lớn');
+        fig.onclick = () => openLightbox(i);
+        fig.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); } };
+        stage.append(fig); pols.push(fig);
+        gsap.set(fig, { x: cx, y: cardTy + 40, scale: .4, opacity: 0, rotation: 0, transformOrigin: '50% 100%' });
+        photoTl.to(fig, { opacity: 1, scale: 1, x: cx + (i - c) * sp, y: cardTy - 120 + Math.abs(i - c) * 16, rotation: (i - c) * 9 + gsap.utils.random(-2, 2), duration: .9, ease: 'back.out(1.4)' }, i * .35);
+      });
+      rise(['💖', '💕'], rectIn(mail), 6, 80, 120, 10);
+      closeBtn = el('button', 'mail-close', '✕ Đóng thiệp');
+      closeBtn.type = 'button';
+      closeBtn.style.top = Math.min(cardTy + 143, H - 54) + 'px';
+      closeBtn.onclick = () => closeAll();
+      stage.append(closeBtn); gsap.set(closeBtn, { opacity: 0 });
+      photoTl.to(closeBtn, { opacity: 1, duration: .5 }, '>');
+      photoTl.call(() => pols.forEach((f, i) => gsap.to(f, { y: '-=5', duration: 2 + i * .3, yoyo: true, repeat: -1, ease: 'sine.inOut' })), null, '>');
+    };
+    // Đóng phần ảnh: ảnh bay về thiệp rồi đóng thiệp
+    const closeAll = () => {
+      if (!photosOpen || lb) return;
+      photosOpen = false;
+      if (photoTl) photoTl.kill();
+      gsap.killTweensOf(pols);
+      const cx = stage.clientWidth / 2 - 55, list = pols; pols = [];
+      closeTl = gsap.timeline();
+      closeTl.to(closeBtn, { opacity: 0, duration: .25 }, 0)
+        .to(list, { opacity: 0, scale: .4, x: cx, y: cardTy + 40, rotation: 0, duration: .6, ease: 'power2.in', stagger: .1 }, 0)
+        .call(() => { list.forEach(f => f.remove()); if (closeBtn) closeBtn.remove(); closeCard(); }, null, '>');
+    };
+
+    const open = () => {
+      if (mailBusy) return;
+      mailBusy = true; opened = true;
+      mail.classList.remove('attn', 'attn2');
+      gsap.killTweensOf(hint); gsap.to(hint, { opacity: 0, duration: .3 });
+      if (wig) wig.kill();
+      gsap.set(w, { rotation: 0 });
+      gsap.set(letter, { y: 0, rotation: 0, transformOrigin: '50% 100%' });
+      const W = stage.clientWidth, H = stage.clientHeight, S = 1.5;
+      const tx = (W - 120 * S) / 2; cardTy = Math.max(H * .58 - 43 * S, 130);
+      const n = Math.max(2, Math.round(gsap.utils.random(3, 5) / .45) - 1);   // lắc lư khoảng 3-5 giây
+      loaded = photos.length ? loadPhotos() : Promise.resolve([]);   // tải ảnh trước trong lúc lá thư đang lắc
+      dim.style.pointerEvents = 'auto'; cv.style.zIndex = 7;
+      mailTl = gsap.timeline();
+      mailTl.to(dim, { opacity: 1, duration: .4 }, 0)
+        .to(mail, { x: tx, y: cardTy, scale: S, duration: .8, ease: 'back.out(1.2)' }, 0)
+        .to(cover, { rotationY: -165, duration: .8, ease: 'power2.inOut' }, .8)
+        .to(letter, { y: -78, duration: .7, ease: 'back.out(1.6)' }, 1.3)
+        .call(() => {
+          const r = rectIn(letter);
+          fire({ particleCount: 50, spread: 80, startVelocity: 30, origin: { x: (r.x + r.w / 2) / r.W, y: (r.y + r.h / 2) / r.H }, colors: ['#ff5c8a', '#ffd166', '#ffffff', '#c77dff'] });
+        }, null, 1.6)
+        .fromTo(letter, { rotation: -7 }, { rotation: 7, duration: .45, yoyo: true, repeat: n, ease: 'sine.inOut', immediateRender: false }, 2.1)
+        .to(letter, { rotation: 0, y: 0, duration: .6, ease: 'power2.in' }, '>')
+        .call(async () => {
+          const ok = (await loaded).filter(Boolean);
+          if (ok.length) showPhotos(ok);
+          else { if (photos.length) toast('Ảnh đã hết hạn (ảnh chỉ được lưu 15 ngày)'); closeCard(); }
+        }, null, '>');
+      // cứ khoảng 0,3 giây có một icon bay ra trong suốt lúc lá thư lắc lư
+      if (!calm) for (let i = 0, cnt = Math.floor(.45 * (n + 1) / .3); i < cnt; i++) mailTl.call(spawnIcon, null, 1.7 + i * .3);
+    };
+    mail.onclick = open;
+    dim.onclick = () => closeAll();
+    mail.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } };
+  }
+
+  // Sticker người tạo chọn: bật ra dưới lời chúc, đung đưa nhẹ và rơi như mưa sticker
+  if (list.length) {
+    const sp = [...stk.children];
+    tl.from(sp, { scale: 0, rotation: -40, duration: .8, stagger: .2, ease: 'elastic.out(1,.45)' }, 8.4);
+    tl.call(() => gsap.to(sp, { y: -6, duration: 1.1, yoyo: true, repeat: -1, ease: 'sine.inOut', stagger: .2 }), null, 9.6);
+    if (!calm) tl.call(() => timers.push(setInterval(() => {
+      const f = el('span', 'fall', list[Math.floor(Math.random() * list.length)]);
+      stage.append(f);
+      gsap.fromTo(f, { x: gsap.utils.random(0, Math.max(stage.clientWidth - 24, 10)), y: -40, rotation: gsap.utils.random(-30, 30) },
+        { y: stage.clientHeight + 40, rotation: gsap.utils.random(-200, 200), duration: gsap.utils.random(5, 8), ease: 'none', onComplete: () => f.remove() });
+    }, 900)), null, 9);
+  }
+  tl.call(() => { if (!calm) balloons(stage); }, null, 3.8);
+  volley(6.6, 4, .6); typeAt(6.8);
+  tl.call(() => { burst(); loop(1500); }, null, 7.4);
+
+  return () => { mailKill(); tl.kill(); timers.forEach(clearInterval); gsap.killTweensOf(stage.querySelectorAll('*')); fw.stop(); stage.innerHTML = ''; };
+}
+
+/* ---------- Nhạc nền: giai điệu hộp nhạc tự tổng hợp bằng Web Audio (không cần file mp3) ---------- */
+const Music = {
+  ctx: null, master: null, tid: 0, on: false, bpm: 96,
+  // [nốt MIDI, số phách] — giai điệu chúc mừng sinh nhật (tác phẩm đã thuộc về công chúng)
+  tune: [[67,.75],[67,.25],[69,1],[67,1],[72,1],[71,2],[67,.75],[67,.25],[69,1],[67,1],[74,1],[72,2],[67,.75],[67,.25],
+         [79,1],[76,1],[72,1],[71,1],[69,1],[77,.75],[77,.25],[76,1],[72,1],[74,1],[72,3]],
+  chords: { C: [48, [60, 64, 67]], G: [43, [59, 62, 67]], F: [41, [57, 60, 65]] },
+  prog: ['C', 'G', 'G', 'C', 'C', 'F', 'G', 'C'],
+  pluck(t, midi, dur, vol) {
+    const c = this.ctx, f = 440 * Math.pow(2, (midi - 69) / 12);
+    [[1, 'triangle', vol], [2, 'sine', vol * .35]].forEach(([m, type, v]) => {
+      const o = c.createOscillator(), g = c.createGain();
+      o.type = type; o.frequency.value = f * m;
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(v, t + .012);
+      g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+      o.connect(g); g.connect(this.master);
+      o.start(t); o.stop(t + dur + .05);
+    });
+  },
+  schedule(t0) {
+    const beat = 60 / this.bpm; let b = 0;
+    this.tune.forEach(([m, n]) => { this.pluck(t0 + b * beat, m, Math.max(n * beat * 2.2, .5), .2); b += n; });
+    this.prog.forEach((k, i) => {
+      const [root, tri] = this.chords[k], bar = 1 + i * 3;
+      this.pluck(t0 + bar * beat, root, beat * 2.5, .16);
+      tri.forEach(m => { this.pluck(t0 + (bar + 1) * beat, m, beat * 1.2, .05); this.pluck(t0 + (bar + 2) * beat, m, beat * 1.2, .05); });
+    });
+    return b * beat;
+  },
+  start() {
+    if (this.on) return;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    if (!this.ctx) this.ctx = new AC();
+    this.ctx.resume();
+    const c = this.ctx;
+    this.master = c.createGain();
+    this.master.gain.setValueAtTime(0, c.currentTime);
+    this.master.gain.linearRampToValueAtTime(.7, c.currentTime + 1.2);
+    this.master.connect(c.destination);
+    this.on = true;
+    this.loop();
+  },
+  loop() {
+    if (!this.on) return;
+    const len = this.schedule(this.ctx.currentTime + .15);
+    this.tid = setTimeout(() => this.loop(), (len + 2) * 1000);
+  },
+  stop() {
+    if (!this.on) return;
+    this.on = false; clearTimeout(this.tid);
+    const m = this.master, c = this.ctx;
+    m.gain.cancelScheduledValues(c.currentTime);
+    m.gain.setValueAtTime(m.gain.value, c.currentTime);
+    m.gain.linearRampToValueAtTime(0, c.currentTime + .4);
+    setTimeout(() => m.disconnect(), 600);
+  }
+};
+const syncMute = () => { $('#mute').textContent = Music.on ? '🔊' : '🔇'; };
+$('#mute').onclick = () => { if (Music.on) Music.stop(); else Music.start(); syncMute(); };
+
+/* ---------- Ảnh của người nhận (tối đa 3) lưu trên Supabase Storage ---------- */
+const SB_URL = 'https://poahjwtfzxcqkudidnhb.supabase.co';
+const SB_KEY = 'sb_publishable_BKd1pHgTzTReU27ICKgpqA_H6sixhCr';   // khóa công khai, được thiết kế để nằm trong code web
+const SB_BUCKET = 'photos';
+const REPORT_URL = '';   // ĐIỀN kênh nhận báo cáo, ví dụ 'mailto:email-cua-ban@gmail.com' hoặc 'https://www.tiktok.com/@ten-ban'
+const photoUrl = id => SB_URL + '/storage/v1/object/public/' + SB_BUCKET + '/' + id + '.jpg';
+const reportHref = () => REPORT_URL.indexOf('mailto:') === 0
+  ? REPORT_URL + '?subject=' + encodeURIComponent('Báo cáo thiệp') + '&body=' + encodeURIComponent('Link thiệp: ' + location.href)
+  : REPORT_URL;
+const rid = () => Array.from(crypto.getRandomValues(new Uint8Array(12)), b => (b % 36).toString(36)).join('');
+const photoState = [];   // { id, blob, url, caption, uploaded }
+
+// Nén ảnh: tối đa ~800px, JPEG, mục tiêu dưới 150KB (kho ảnh giới hạn 200KB)
+async function compress(file) {
+  let bmp;
+  try { bmp = await createImageBitmap(file, { imageOrientation: 'from-image' }); }
+  catch (e) {
+    bmp = await new Promise((res, rej) => {
+      const u = URL.createObjectURL(file), im = new Image();
+      im.onload = () => { URL.revokeObjectURL(u); res(im); };
+      im.onerror = rej; im.src = u;
+    });
+  }
+  const w0 = bmp.width || bmp.naturalWidth, h0 = bmp.height || bmp.naturalHeight;
+  let last = null;
+  for (const [max, q] of [[800, .82], [800, .7], [720, .65], [640, .55], [560, .5]]) {
+    const k = Math.min(1, max / Math.max(w0, h0)), c = document.createElement('canvas');
+    c.width = Math.round(w0 * k); c.height = Math.round(h0 * k);
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    last = await new Promise(r => c.toBlob(r, 'image/jpeg', q));
+    if (last && last.size <= 150 * 1024) return last;
+  }
+  if (last && last.size <= 190 * 1024) return last;
+  throw new Error('Ảnh quá nặng');
+}
+
+function renderPhotos() {
+  const box = $('#photos'); box.innerHTML = '';
+  photoState.forEach((p, i) => {
+    const row = el('div', 'ph-row'), im = el('img'), cap = el('input'), rm = el('button', 'ph-x', '✕');
+    im.src = p.url; im.alt = '';
+    cap.type = 'text'; cap.maxLength = 40; cap.placeholder = 'Chú thích (tùy chọn)'; cap.value = p.caption;
+    cap.oninput = () => { p.caption = cap.value; };
+    rm.type = 'button'; rm.setAttribute('aria-label', 'Xóa ảnh');
+    rm.onclick = () => { URL.revokeObjectURL(p.url); photoState.splice(i, 1); renderPhotos(); };
+    row.append(im, cap, rm); box.append(row);
+  });
+  $('#addPhoto').hidden = photoState.length >= 3;
+  $('#consentWrap').hidden = !photoState.length;
+}
+$('#addPhoto').onclick = () => $('#photoFile').click();
+$('#photoFile').onchange = async e => {
+  const files = [...e.target.files].filter(f => f.type.indexOf('image/') === 0).slice(0, 3 - photoState.length);
+  e.target.value = '';
+  $('#upstat').textContent = files.length ? 'Đang xử lý ảnh...' : '';
+  let failed = false;
+  for (const f of files) {
+    try { const blob = await compress(f); photoState.push({ id: rid(), blob, url: URL.createObjectURL(blob), caption: '', uploaded: false }); }
+    catch (err) { failed = true; }
+  }
+  $('#upstat').textContent = failed ? 'Không xử lý được một số ảnh. Hãy thử ảnh khác.' : '';
+  renderPhotos();
+};
+renderPhotos();
+
+// Tải ảnh lên Supabase (chỉ gửi những ảnh chưa tải)
+async function uploadPhotos() {
+  const total = photoState.length;
+  for (let i = 0; i < total; i++) {
+    const p = photoState[i];
+    if (p.uploaded) continue;
+    $('#upstat').textContent = 'Đang tải ảnh lên (' + (i + 1) + '/' + total + ')...';
+    const url = SB_URL + '/storage/v1/object/' + SB_BUCKET + '/' + p.id + '.jpg';
+    const send = hdr => fetch(url, { method: 'POST', headers: Object.assign({ 'Content-Type': 'image/jpeg' }, hdr), body: p.blob });
+    let r = await send({ apikey: SB_KEY });
+    if (r.status === 401) r = await send({ apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY });
+    if (!r.ok) { console.error('Tải ảnh lỗi', r.status, await r.text()); throw new Error('upload ' + r.status); }
+    p.uploaded = true;
+  }
+}
+
+/* ---------- Editor ---------- */
+let stopPreview = null;
+function readForm() {
+  return {
+    v: 1,
+    theme: document.querySelector('input[name=theme]:checked').value,
+    name: $('#name').value.trim(),
+    from: $('#from').value.trim().slice(0, 40),
+    age: Math.max(0, Math.min(120, parseInt($('#age').value, 10) || 0)),
+    message: $('#message').value.trim(),
+    st: [...document.querySelectorAll('#stk input:checked')].map(i => +i.value),
+    ph: photoState.map(p => [p.id, p.caption.trim().slice(0, 40)]),
+    _local: Object.fromEntries(photoState.map(p => [p.id, p.url]))
+  };
+}
+function preview(withSound) {
+  if (stopPreview) stopPreview();
+  Music.stop();
+  stopPreview = play($('#preview'), readForm());
+  if (withSound === true && $('#music').checked) Music.start();
+}
+
+async function makeLink() {
+  const cfg = readForm();
+  if (cfg.ph.length) {
+    if (!cfg.from) { $('#upstat').textContent = 'Hãy nhập tên người gửi ở ô "Từ" để thêm ảnh vào thiệp.'; $('#from').focus(); return; }
+    if (!$('#consent').checked) { $('#upstat').textContent = 'Hãy tick ô đồng ý ở phần ảnh trước khi tạo link.'; return; }
+    $('#make').disabled = true;
+    try { await uploadPhotos(); $('#upstat').textContent = ''; }
+    catch (e) { $('#upstat').textContent = 'Không tải được ảnh lên. Hãy kiểm tra mạng rồi thử lại.'; $('#make').disabled = false; return; }
+    $('#make').disabled = false;
+  }
+  if (!cfg.message) delete cfg.message; if (!cfg.st.length) delete cfg.st; if (!cfg.age) delete cfg.age; if (!cfg.from) delete cfg.from; if (!cfg.ph.length) delete cfg.ph; delete cfg._local; if (!$('#music').checked) cfg.m = 0;   // dùng lời chúc mặc định để link ngắn hơn
+  const code = LZString.compressToEncodedURIComponent(JSON.stringify(cfg));
+  const link = location.href.split('#')[0] + '#v=' + code;
+  $('#result').hidden = false;
+  $('#link').value = link;
+  $('#len').textContent = 'Độ dài link: ' + link.length + ' ký tự';
+  const q = $('#qr'); q.innerHTML = '';
+  try {
+    new QRCode(q, { text: link, width: 200, height: 200, correctLevel: QRCode.CorrectLevel.L });
+  } catch (e) {
+    q.textContent = 'Link quá dài để tạo QR. Hãy rút ngắn lời chúc.';
+  }
+  $('#result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+$('#replay').onclick = () => preview(true);
+$('#make').onclick = makeLink;
+$('#copy').onclick = async () => {
+  const i = $('#link');
+  try { await navigator.clipboard.writeText(i.value); $('#copy').textContent = 'Đã sao chép'; }
+  catch (e) { i.select(); $('#copy').textContent = 'Nhấn Ctrl+C để sao chép'; }
+  setTimeout(() => $('#copy').textContent = 'Sao chép link', 2000);
+};
+if (navigator.share) $('#share').hidden = false;
+$('#share').onclick = async () => {
+  const name = readForm().name;
+  try {
+    await navigator.share({ title: 'Thiệp chúc mừng', text: name ? 'Có một tấm thiệp dành cho ' + name + '!' : 'Có một tấm thiệp dành cho bạn!', url: $('#link').value });
+  } catch (e) { /* người dùng đóng hộp chia sẻ */ }
+};
+$('#test').onclick = () => { location.hash = $('#link').value.split('#')[1]; };
+$('#dl').onclick = () => {
+  const c = $('#qr canvas');
+  if (!c) return;
+  const a = document.createElement('a');
+  a.href = c.toDataURL('image/png'); a.download = 'thiep-qr.png'; a.click();
+};
+
+/* ---------- Viewer + routing ---------- */
+let stopView = null;
+function route() {
+  Music.stop(); $('#mute').hidden = true; $('#report').hidden = true;
+  const m = location.hash.match(/^#v=(.+)$/);
+  if (stopView) { stopView(); stopView = null; }
+  if (stopPreview) { stopPreview(); stopPreview = null; }
+  if (!m) {
+    $('#viewer').hidden = true; $('#editor').hidden = false;
+    preview();
+    return;
+  }
+  let cfg = null;
+  try { cfg = JSON.parse(LZString.decompressFromEncodedURIComponent(m[1])); } catch (e) {}
+  $('#editor').hidden = true; $('#viewer').hidden = false;
+  $('#back').hidden = true; $('#gate').hidden = false;
+  const vs = $('#vstage');
+  if (!cfg || typeof cfg !== 'object') {
+    vs.innerHTML = ''; vs.className = 'stage t-birthday';
+    $('#gateTxt').textContent = 'Link thiệp bị lỗi hoặc đã bị cắt bớt. Hãy xin người gửi một link mới.';
+    $('#open').hidden = true; $('#back').hidden = false;
+    return;
+  }
+  $('#open').hidden = false;
+  $('#gateTxt').textContent = 'Bạn có một tấm thiệp dành cho bạn';
+  vs.innerHTML = ''; vs.className = 'stage ' + (THEMES[cfg.theme] || THEMES.birthday).cls;
+  $('#open').onclick = () => {
+    $('#gate').hidden = true;
+    stopView = play(vs, cfg);
+    if (cfg.m !== 0) { Music.start(); syncMute(); $('#mute').hidden = false; }
+    if (REPORT_URL && Array.isArray(cfg.ph) && cfg.ph.length) { $('#report').href = reportHref(); $('#report').hidden = false; }
+    setTimeout(() => { $('#back').hidden = false; }, 8000);
+  };
+}
+const stkBox = $('#stk');
+STICKERS.forEach((e, i) => {
+  const l = document.createElement('label');
+  l.innerHTML = '<input type="checkbox" value="' + i + '"><span>' + e + '</span>';
+  stkBox.append(l);
+});
+stkBox.addEventListener('change', ev => {
+  if (stkBox.querySelectorAll('input:checked').length > 3) ev.target.checked = false;
+});
+addEventListener('hashchange', route);
+route();
+
+/* ---------- Ủng hộ gói mì tôm (chỉ ở khu vực người tạo thiệp) ---------- */
+const donateModal = $('#donateModal');
+const closeDonate = () => { donateModal.hidden = true; $('#donate').focus(); };
+$('#donate').onclick = () => { donateModal.hidden = false; $('#donateClose').focus(); };
+$('#donateClose').onclick = closeDonate;
+donateModal.addEventListener('click', e => { if (e.target === donateModal) closeDonate(); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && !donateModal.hidden) closeDonate(); });
+
+/* Trình duyệt trong ứng dụng (TikTok, Facebook, Zalo...) hay chặn chia sẻ / tải file → nhắc mở bằng trình duyệt */
+if (/TikTok|musical_ly|Bytedance|FBAN|FBAV|Instagram|Zalo/i.test(navigator.userAgent)) $('#inapp').hidden = false;
+
+/* ---------- PWA: cài lên màn hình điện thoại, dùng được khi mất mạng ---------- */
+let installEv = null;
+addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEv = e; $('#install').hidden = false; });
+addEventListener('appinstalled', () => { installEv = null; $('#install').hidden = true; });
+$('#install').onclick = async () => {
+  if (!installEv) return;
+  installEv.prompt();
+  await installEv.userChoice;
+  installEv = null; $('#install').hidden = true;
+};
+if (/iphone|ipad|ipod/i.test(navigator.userAgent) && !navigator.standalone) $('#iosHint').hidden = false;
+if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+  addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>
